@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agropacayales-backend-deployment
+  namespace: agropacayales-k8s
+  labels:
+    app: agropacayales-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: agropacayales-backend
+  template:
+    metadata:
+      labels:
+        app: agropacayales-backend
+    spec:
+      containers:
+      - name: backend
+        image: anafelix/agropacayales-backend:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        envFrom:
+        - configMapRef:
+            name: agropacayales-config
+        - secretRef:
+            name: agropacayales-secret
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: agropacayales-backend-service
+  namespace: agropacayales-k8s
+spec:
+  type: NodePort
+  selector:
+    app: agropacayales-backend
+  ports:
+  - port: 8081
+    targetPort: 8081
+    nodePort: 30081

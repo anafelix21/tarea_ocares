@@ -1,0 +1,58 @@
+# GUÍA DE ARRANQUE RÁPIDO (Comandos Maven)
+# 1. Para arrancar en modo LOCAL:
+#    mvn spring-boot:run
+
+server:
+  port: ${SERVER_PORT:8081}
+
+spring:
+  application:
+    name: AgroPacayales-Backend-WebFlux-Poliglota
+  profiles:
+    active: local
+  r2dbc:
+    url: r2dbc:h2:mem:///agropacayales_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
+  sql:
+    init:
+      mode: always
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+
+logging:
+  level:
+    root: INFO
+    Agropacayales.valleGrande: DEBUG
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG
+    org.springframework.r2dbc: DEBUG
+
+---
+# PERFIL: LOCAL (Tu computadora / Embedded / Docker)
+spring:
+  config:
+    activate:
+      on-profile: local
+  data:
+    mongodb:
+      uri: ${MONGO_URI_LOCAL:mongodb://localhost:27017/agropacayales_db}
+      auto-index-creation: true
+
+---
+# PERFIL: CLOUD (MongoDB Atlas)
+spring:
+  config:
+    activate:
+      on-profile: cloud
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb+srv://axelhuapaya_db_user:lider2021@cluster0.oyk6ogs.mongodb.net/?appName=Cluster0}
+      database: ${MONGO_DATABASE:agropacayales_db}
+      auto-index-creation: true
+

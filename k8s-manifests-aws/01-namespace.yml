@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agropacayales-k8s
+  labels:
+    name: agropacayales-k8s
+    environment: production

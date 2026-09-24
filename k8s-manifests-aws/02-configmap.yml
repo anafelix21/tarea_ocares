@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agropacayales-config
+  namespace: agropacayales-k8s
+data:
+  SERVER_PORT: "8081"
+  SPRING_PROFILES_ACTIVE: "cloud"
+  MONGO_URI_LOCAL: "mongodb://172.31.20.100:27017/agropacayales_db"
+  MONGO_DATABASE: "agropacayales_db"
+  R2DBC_URL: "r2dbc:h2:mem:///agropacayales_db;DB_CLOSE_DELAY=-1"

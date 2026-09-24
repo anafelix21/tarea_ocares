@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "AgroPacayales Mobile",
+    "slug": "vg-ms-agropacayales-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#0f172a"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
