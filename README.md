@@ -9,8 +9,8 @@
 - **Responsable Principal del Despliegue**: Ana Félix (`ana.felix@agropacayales.com`)
 - **Integrantes**: Ana Félix, Hugo Fernández, Axel Huapaya
 - **Imágenes Públicas en Docker Hub**:
-  - 🎨 **Frontend**: [`anafelix/agropacayales-frontend:1.0`](https://hub.docker.com/r/anafelix/agropacayales-frontend)
-  - ⚙️ **Backend**: [`anafelix/agropacayales-backend:1.0`](https://hub.docker.com/r/anafelix/agropacayales-backend)
+  - 🎨 **Frontend**: [`anafelixmendoza21/agropacayales-frontend:1.0`](https://hub.docker.com/r/anafelixmendoza21/agropacayales-frontend)
+  - ⚙️ **Backend**: [`anafelixmendoza21/agropacayales-backend:1.0`](https://hub.docker.com/r/anafelixmendoza21/agropacayales-backend)
 
 ---
 
@@ -43,8 +43,8 @@ No es necesario instalar Git ni clonar el código en cada servidor EC2 porque lo
 
 ```bash
 # Docker descarga automáticamente la imagen compilada en menos de 10 segundos:
-docker run -d -p 80:80 anafelix/agropacayales-frontend:1.0
-docker run -d -p 8081:8081 anafelix/agropacayales-backend:1.0
+docker run -d -p 80:80 anafelixmendoza21/agropacayales-frontend:1.0
+docker run -d -p 8081:8081 anafelixmendoza21/agropacayales-backend:1.0
 ```
 
 ---
@@ -113,7 +113,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: anafelix/agropacayales-backend:1.0
+        image: anafelixmendoza21/agropacayales-backend:1.0
         ports:
         - containerPort: 8081
 ---
@@ -148,7 +148,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: anafelix/agropacayales-frontend:1.0
+        image: anafelixmendoza21/agropacayales-frontend:1.0
         ports:
         - containerPort: 80
 ---
@@ -185,7 +185,7 @@ sudo docker run -d \
   --name agropacayales-frontend \
   --restart always \
   -p 80:80 \
-  anafelix/agropacayales-frontend:1.0
+  anafelixmendoza21/agropacayales-frontend:1.0
 ```
 
 ---
@@ -205,7 +205,7 @@ sudo docker run -d \
   -p 8081:8081 \
   -e SERVER_PORT=8081 \
   -e SPRING_PROFILES_ACTIVE=local \
-  anafelix/agropacayales-backend:1.0
+  anafelixmendoza21/agropacayales-backend:1.0
 ```
 
 ---

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: anafelix/agropacayales-backend:1.0
+        image: anafelixmendoza21/agropacayales-backend:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
